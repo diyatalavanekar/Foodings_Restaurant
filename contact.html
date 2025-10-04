@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us</title>
+  <style>
+    /* General Page Styling */
+    body 
+    {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(48,47,81);
+    }
+
+    /* Top Navigation Bar */
+    .topnav 
+    {
+      overflow: hidden;
+      background-color: white;
+      text-align: center;
+    }
+
+    .topnav a 
+    {
+      display: inline-block;
+      color: rgb(48,47,81);
+      text-align: center;
+      padding: 20px 20px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .topnav a:hover 
+    {
+      background-color: rgb(48,47,81);
+      color: white;
+    }
+    
+    /* Form Container */
+    .container 
+    {
+      width: 100%;
+      max-width: 1140px;
+      margin: 30px auto;
+      background: white;
+      border: 2px solid rgb(48,47,81);
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Title Section */
+    .title
+    {
+      background: linear-gradient(to bottom right, rgb(48, 47, 81), rgb(68, 66, 130));
+      border-radius: 5px 5px 0 0;
+      padding: 20px;
+      color: #f6f6f6;
+    }
+    h2 
+    {
+      margin: 0;
+      padding-left: 15px;
+    }
+
+    /* Flex Layout */
+    .d-flex 
+    {
+      display: flex;
+      flex-direction: row;
+      background: #f6f6f6;
+      border-radius: 0 0 5px 5px;
+      padding: 25px;
+      justify-content: center;
+    }
+
+    form 
+    {
+      flex: 1;
+      max-width: 700px;
+    }
+
+    /* Form Inputs */
+    label 
+    {
+      display: block;
+      margin: 15px;
+    }
+
+    label > span 
+    {
+      float: left;
+      width: 25%;
+      margin-top: 12px;
+      padding-right: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea 
+    {
+      width: 70%;
+      height: 30px;
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      border: 1px solid #dadada;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    textarea 
+    {
+      height: 100px;
+    }
+
+    /* Submit Button */
+    .submit-btn 
+    {
+      display: inline-block;
+      width: 90%;
+      text-align: center;
+      padding: 12px;
+      border: 2px solid rgb(48,47,81);
+      border-radius: 5px;
+      background-color: white;
+      color: rgb(48,47,81);
+      font-size: 17px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 20px 15%;
+    }
+
+    .submit-btn:hover 
+    {
+      background-color: rgb(48,47,81);
+      color: white;
+    }
+
+    /* ----------- Footer ----------- */
+    .footer {
+      background: rgb(48,47,81);
+      color: white;
+      padding: 40px 80px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logo {
+      height: 70px;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      border-bottom: 2px solid white;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin: 8px 0;
+    }
+
+    .footer-section ul li a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: lightgray;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      border-top: 1px solid white;
+      padding-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo Section -->
+  <div style="text-align:center;">
+    <img src="logo.jpg" height="130" width="500" alt="Logo" />
+  </div>
+
+  <!-- Top Border Line -->
+  <hr style="border:2px solid rgb(48,47,81);" />
+
+  <!-- Navigation Bar -->
+  <div class="topnav">
+    <a href="home.html">                    Home</a>
+    <a href="Menu.html">                    Menu</a>
+    <a href="Order.html">                   Order</a>
+    <a href="login.html">                   Log in</a>
+    <a href="contact.html" class="active">  Contact Us</a>
+  </div>
+
+  <!-- Bottom Border Line -->
+  <hr style="border:2px solid rgb(48,47,81);" />
+
+  <!-- Contact Form Container -->
+  <div class="container">
+    <!-- Title -->
+    <div class="title">
+      <h2>Contact Us</h2>
+    </div>
+
+    <div class="d-flex">
+      <!-- Contact Form -->
+      <form action="#" method="post">
+        <label>
+          <span>Name *</span>
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          <span>Email *</span>
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          <span>Subject *</span>
+          <input type="text" name="subject" required />
+        </label>
+        <label>
+          <span>Message *</span>
+          <textarea name="message" required></textarea>
+        </label>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+<!--Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- Branding -->
+      <div class="footer-section">
+        <img src="logo.jpg" alt="Logo" class="footer-logo">
+        <p class="footer-brand">By Diya & Shital</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="payment.html">Payment</a></li>
+          <li><a href="ratings.html">Ratings</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: diyashital@gmail.com</p>
+        <p>Phone: +91 7756053060</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>© 2025 Your Website. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
