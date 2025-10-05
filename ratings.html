@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -265,3 +266,272 @@
   </footer>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ratings Form</title>
+  <style>
+    /* General Page Styling */
+    body 
+    {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: white;
+    }
+
+    /* Navigation Bar */
+    .topnav 
+    {
+      overflow: hidden;
+      background-color: white;
+      text-align: center;
+    }
+
+    .topnav a 
+    {
+      display: inline-block;
+      color: rgb(48,47,81);
+      text-align: center;
+      padding: 20px 20px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .topnav a:hover 
+    {
+      background-color: rgb(48,47,81);
+      color: white;
+    }
+
+    /* Feedback Form Container */
+    .form-container 
+    {
+      width: 450px;
+      margin: 50px auto;
+      padding: 30px;
+      border: 2px solid rgb(48,47,81);
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .form-container h1 
+    {
+      text-align: center;
+      color: rgb(48,47,81);
+      margin-bottom: 20px;
+    }
+
+    /* Labels */
+    .form-container label 
+    {
+      font-weight: bold;
+      color: rgb(48,47,81);
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    /* Input Fields */
+    .form-container input, 
+    .form-container textarea, 
+    .form-container select 
+    {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    textarea 
+    {
+      resize: none;
+      height: 100px;
+    }
+
+    /* Submit Button */
+    .form-container input[type="submit"] 
+    {
+      background-color: rgb(48,47,81);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 25px;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    .form-container input[type="submit"]:hover 
+    {
+      background-color: rgb(48,47,81);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* ----------- Footer ----------- */
+    .footer {
+      background: rgb(48,47,81);
+      color: white;
+      padding: 40px 80px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logo {
+      height: 70px;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      border-bottom: 2px solid white;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin: 8px 0;
+    }
+
+    .footer-section ul li a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: lightgray;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      border-top: 1px solid white;
+      padding-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Logo Section -->
+  <div style="text-align:center;">
+    <img src="logo.jpg" height="130" width="500">
+  </div>
+
+  <!-- Top Border Line -->
+  <hr style="border:2px solid rgb(48,47,81);">
+
+  <!-- Navigation Bar -->
+  <div class="topnav">
+    <a href="home.html">          Home</a>
+    <a href="Menu.html">          Menu</a>
+    <a href="Order.html">         Order</a>
+    <a href="login.html">         Log in</a>
+    <a href="contact.html">       Contact Us</a>
+  </div>
+
+  <!-- Bottom Border Line -->
+  <hr style="border:2px solid rgb(48,47,81);">
+
+  <!-- Feedback Form -->
+  <div class="form-container">
+    <h1>Reviews</h1>
+    <form action="feedback.php" method="post">
+      
+      <label>Name:</label>
+      <input type="text" name="name" placeholder="Enter your name" required>
+      
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Enter your email" required>
+      
+      <label>Rate Our Service:</label>
+      <select name="rating" required>
+        <option value="">-- Select Rating --</option>
+        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+        <option value="4">⭐⭐⭐⭐ Good</option>
+        <option value="3">⭐⭐⭐ Average</option>
+        <option value="2">⭐⭐ Poor</option>
+        <option value="1">⭐ Very Poor</option>
+      </select>
+
+      <label>Your Feedback:</label>
+      <textarea name="message" placeholder="Write your feedback here..." required></textarea>
+
+      <input type="submit" value="Submit Feedback">
+    </form>
+  </div>
+<!--Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- Branding -->
+      <div class="footer-section">
+        <img src="logo.jpg" alt="Logo" class="footer-logo">
+        <p class="footer-brand">By Diya & Shital</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="payment.html">Payment</a></li>
+          <li><a href="ratings.html">Ratings</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: diyashital@gmail.com</p>
+        <p>Phone: +91 7756053060</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>© 2025 Your Website. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+>>>>>>> b125bf4211a66448bb22032e38fef1182d911585
