@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In Form</title>
+  <style>
+    /* General Page Styling */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: white;
+    }
+
+    /* Navigation Bar */
+    .topnav {
+      overflow: hidden;
+      background-color: white;
+      text-align: center;
+    }
+
+    .topnav a {
+      display: inline-block;
+      color: rgb(48,47,81);
+      text-align: center;
+      padding: 20px 20px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .topnav a:hover {
+      background-color: rgb(48,47,81);
+      color: white;
+    }
+
+    /* Form Container */
+    .form-container {
+      width: 400px;
+      margin: 50px auto;
+      padding: 30px;
+      border: 2px solid rgb(48,47,81);
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .form-container h1 {
+      text-align: center;
+      color: rgb(48,47,81);
+      margin-bottom: 20px;
+    }
+
+    /* Form Inputs */
+    .form-container label {
+      font-weight: bold;
+      color: rgb(48,47,81);
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Submit Button */
+    .form-container input[type="submit"] {
+      width: 100%;
+      background-color: white;
+      color: rgb(48,47,81);
+      font-weight: bold;
+      cursor: pointer;
+      border: 2px solid rgb(48,47,81);
+      border-radius: 5px;
+      padding: 12px;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    .form-container input[type="submit"]:hover {
+      background-color: rgb(48,47,81);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    .footer {
+      background: rgb(48,47,81);
+      color: white;
+      padding: 40px 80px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logo {
+      height: 70px;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      border-bottom: 2px solid white;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin: 8px 0;
+    }
+
+    .footer-section ul li a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: lightgray;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      border-top: 1px solid white;
+      padding-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo Section -->
+  <div style="text-align:center;">
+    <img src="logo.jpg" height="130" width="500">
+  </div>
+
+  <!-- Top Border Line -->
+  <hr style="border:2px solid rgb(48,47,81);">
+
+  <!-- Navigation Bar -->
+  <div class="topnav" id="navbar">
+    <a href="home.html">Home</a>
+    <a href="Menu.html">Menu</a>
+    <a href="Order.html">Order</a>
+    <a href="login.html" id="login-link">Log in</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- Bottom Border Line -->
+  <hr style="border:2px solid rgb(48,47,81);">
+
+  <!-- Sign In Form -->
+  <div class="form-container">
+    <h1>Sign In</h1>
+    <form id="signinForm">
+      <label>Username:</label>
+      <input type="text" id="username" placeholder="Enter Username" required>
+
+      <label>Password:</label>
+      <input type="password" id="password" placeholder="Enter Password" required>
+
+      <input type="submit" value="Sign In">
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Branding -->
+      <div class="footer-section">
+        <img src="logo.jpg" alt="Logo" class="footer-logo">
+        <p class="footer-brand">By Diya & Shital</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="payment.html">Payment</a></li>
+          <li><a href="ratings.html">Ratings</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: diyashital@gmail.com</p>
+        <p>Phone: +91 7756053060</p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>© 2025 Your Website. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Fake credentials for validation
+    const validUser = "Diya";
+    const validPass = "12345";
+
+    document.getElementById("signinForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // stop form submission
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === validUser && password === validPass) {
+        // Save username to localStorage so it's accessible on other pages
+        localStorage.setItem("loggedInUser", username);
+
+        // Redirect to home page
+        window.location.href = "home.html";
+      } else {
+        alert("Invalid Username or Password!");
+      }
+    });
+
+    // Show user in navbar if logged in
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      const loginLink = document.getElementById("login-link");
+      loginLink.innerHTML = `<img src="login image.png" height="20" style="vertical-align:middle;"> ${loggedInUser}`;
+      loginLink.href = "#";
+    }
+  </script>
+</body>
+</html>

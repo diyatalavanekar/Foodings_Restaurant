@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu Page</title>
+  <style>
+    /* General Page Styling */
+    body 
+    {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: white;
+    }
+
+    /* Navigation Bar */
+    .topnav 
+    {
+      overflow: hidden;
+      background-color: white;
+      text-align: center; 
+    }
+
+    .topnav a 
+    {
+      display: inline-block;
+      color: rgb(48,47,81);
+      text-align: center;
+      padding: 20px 20px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: bold; 
+    }
+
+    .topnav a:hover 
+    {
+      background-color: rgb(48,47,81); 
+      color: white; 
+    }
+    
+    /* ----------- Footer ----------- */
+    .footer {
+      background: rgb(48,47,81);
+      color: white;
+      padding: 40px 80px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logo {
+      height: 70px;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      border-bottom: 2px solid white;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin: 8px 0;
+    }
+
+    .footer-section ul li a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: lightgray;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      border-top: 1px solid white;
+      padding-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Logo -->
+  <div style="text-align:center;">
+    <img src="logo.jpg" height="130" width="500">
+  </div>
+
+  <!-- Top border line -->
+  <hr style="border:2px solid rgb(48,47,81);">
+
+  <!-- Navigation Bar -->
+  <div class="topnav">
+    <a href="home.html">          Home</a>
+    <a href="Menu.html">          Menu</a>
+    <a href="Order.html">         Order</a>
+    <a href="login.html">         Log in</a>
+    <a href="contact.html">       Contact Us</a>
+  </div>
+
+  <!-- Bottom border line -->
+  <hr style="border:2px solid rgb(48,47,81);">
+
+  <!-- Heading -->
+  <h1 style="text-align:center; color:rgb(48,47,81);">Our Products</h1>
+
+  <!-- Product Menu Grid -->
+  <center>
+    <table>
+      <tr>
+        <td>
+          <a href="Starters.html">
+            <img src="menu image of starter.jpg"          height="300" width="300">
+          </a>
+        </td>
+        <td>
+          <a href="Main courses.html">
+            <img src="menu main courses.jpg"              height="300" width="300">
+          </a>
+        </td>
+        <td>
+          <a href="Beverages.html">
+            <img src="menu image of beverages.jpg"        height="300" width="300">
+          </a>
+        </td>
+        <td>
+          <a href="Soups and salads.html">
+            <img src="menu image of soups and salads.jpg" height="300" width="300">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td><center><b>STARTERS       </b></center></td>
+        <td><center><b>MAIN COURSES   </b></center></td>
+        <td><center><b>BEVERAGES      </b></center></td>
+        <td><center><b>SOUPS & SALADS </b></center></td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="Cake.html">
+            <img src="cakes.jpeg"                 height="300" width="300">
+          </a>
+        </td>
+        <td>
+          <a href="Desserts.html">
+            <img src="menu image of dessert.jpg"  height="300" width="300">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td><center><b>CAKES    </b></center></td>
+        <td><center><b>DESSERTS </b></center></td>
+      </tr>
+    </table>
+  </center>
+
+<!--Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- Branding -->
+      <div class="footer-section">
+        <img src="logo.jpg" alt="Logo" class="footer-logo">
+        <p class="footer-brand">By Diya & Shital</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="payment.html">Payment</a></li>
+          <li><a href="ratings.html">Ratings</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: diyashital@gmail.com</p>
+        <p>Phone: +91 7756053060</p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>© 2025 Your Website. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
