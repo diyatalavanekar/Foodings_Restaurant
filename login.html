@@ -57,13 +57,13 @@
     .login-section {
       background: url('login background.jpg') no-repeat center center;
       background-size: cover;
-      padding: 60px 0; /* vertical space around login box */
+      padding: 60px 0;
     }
 
     /* Login Box */
     .login-box {
       width: 320px;
-      margin: 0 auto; /* center horizontally */
+      margin: 0 auto;
       padding: 25px;
       border-radius: 8px;
       background-color: white;
@@ -206,7 +206,6 @@
       padding-top: 10px;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .footer-container {
         flex-direction: column;
@@ -225,7 +224,6 @@
     <img src="logo.jpg" height="130" width="500">
   </div>
 
-  <!-- Top Border Line -->
   <hr style="border:2px solid rgb(48,47,81);">
 
   <!-- Navigation Bar -->
@@ -238,14 +236,13 @@
     <span class="username" id="username-display"></span>
   </div>
 
-  <!-- Bottom Border Line -->
   <hr style="border:2px solid rgb(48,47,81);">
 
-  <!-- Login Section with Background Image -->
+  <!-- Login Section -->
   <div class="login-section">
     <div class="login-box">
       <h2>Login</h2>
-      <form id="loginForm" name="login" method="post" action="login.php" onsubmit="return validateForm()">
+      <form id="loginForm" name="login" method="post" action="logintable.php">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required minlength="3">
 
@@ -261,24 +258,7 @@
     </div>
   </div>
 
-  <script>
-    function validateForm() {
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      if (username.length < 3) {
-        alert("Username must be at least 3 characters long.");
-        return false;
-      }
-      if (password.length < 6) {
-        alert("Password must be at least 6 characters long.");
-        return false;
-      }
-      return true; // form submits to login.php
-    }
-  </script>
-
-  <!--Footer -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-section">
@@ -307,5 +287,53 @@
       <p>© 2025 Your Website. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <!-- SCRIPT SECTION -->
+  <script>
+    // Form validation before login
+    function validateForm() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username.length < 3) {
+        alert("Username must be at least 3 characters long.");
+        return false;
+      }
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+      }
+      return true;
+    }
+
+    // Handle login and save user info
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      const savedUser = localStorage.getItem("registeredUser");
+      const savedPass = localStorage.getItem("registeredPass");
+
+      if (username === savedUser && password === savedPass) {
+        localStorage.setItem("loggedInUser", username);
+        alert("Login successful!");
+        window.location.href = "home.html";
+      } else {
+        alert("Invalid Username or Password!");
+      }
+    });
+
+    // Show logged-in username in navbar
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      const usernameDisplay = document.getElementById("username-display");
+      if (usernameDisplay) {
+        usernameDisplay.textContent = "Hello, " + loggedInUser;
+      }
+    }
+  </script>
 </body>
 </html>

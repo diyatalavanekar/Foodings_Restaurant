@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sign In Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodings - Sign Up</title>
   <style>
-    /* General Page Styling */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -86,6 +87,24 @@
       transform: scale(1.05);
     }
 
+    /* Login text */
+    .login-text {
+      text-align: center;
+      font-size: 14px;
+      color: rgb(48,47,81);
+      margin-top: 10px;
+    }
+
+    .login-text a {
+      color: rgb(48,47,81);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .login-text a:hover {
+      text-decoration: underline;
+    }
+
     /* Footer */
     .footer {
       background: rgb(48,47,81);
@@ -151,7 +170,6 @@
       padding-top: 10px;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .footer-container {
         flex-direction: column;
@@ -161,50 +179,83 @@
   </style>
 </head>
 <body>
-  <!-- Logo Section -->
+  <!-- Logo -->
   <div style="text-align:center;">
     <img src="logo.jpg" height="130" width="500">
   </div>
 
-  <!-- Top Border Line -->
   <hr style="border:2px solid rgb(48,47,81);">
 
-  <!-- Navigation Bar -->
-  <div class="topnav" id="navbar">
+  <!-- Navigation -->
+  <div class="topnav">
     <a href="home.html">Home</a>
     <a href="Menu.html">Menu</a>
     <a href="Order.html">Order</a>
-    <a href="login.html" id="login-link">Log in</a>
+    <a href="login.html">Log in</a>
     <a href="contact.html">Contact Us</a>
   </div>
 
-  <!-- Bottom Border Line -->
   <hr style="border:2px solid rgb(48,47,81);">
 
-  <!-- Sign In Form -->
+  <!-- Sign Up Form -->
   <div class="form-container">
-    <h1>Sign In</h1>
-    <form id="signinForm">
+    <h1>Sign Up</h1>
+    <form name="signupForm" method="post" action="signuptable.php" onsubmit="return validateForm()">
+      <label>Full Name:</label>
+      <input type="text" name="fullname" id="fullname" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" id="email" required>
+
       <label>Username:</label>
-      <input type="text" id="username" placeholder="Enter Username" required>
+      <input type="text" name="username" id="username" required minlength="3">
 
       <label>Password:</label>
-      <input type="password" id="password" placeholder="Enter Password" required>
+      <input type="password" name="password" id="password" required minlength="6">
 
-      <input type="submit" value="Sign In">
+      <input type="submit" value="Sign Up">
     </form>
+
+    <div class="login-text">
+      Already have an account? <a href="login.html">Log In</a>
+    </div>
   </div>
+
+  <script>
+    function validateForm() {
+      const fullname = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (fullname === "" || !/^[a-zA-Z\s]+$/.test(fullname)) {
+        alert("Please enter a valid full name (letters only).");
+        return false;
+      }
+      if (username.length < 3) {
+        alert("Username must be at least 3 characters long.");
+        return false;
+      }
+      if (!email.includes("@") || !email.includes(".")) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+      }
+      return true;
+    }
+  </script>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
-      <!-- Branding -->
       <div class="footer-section">
         <img src="logo.jpg" alt="Logo" class="footer-logo">
         <p class="footer-brand">By Diya & Shital</p>
       </div>
 
-      <!-- Quick Links -->
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
@@ -215,7 +266,6 @@
         </ul>
       </div>
 
-      <!-- Contact -->
       <div class="footer-section">
         <h4>Contact</h4>
         <p>Email: diyashital@gmail.com</p>
@@ -223,41 +273,9 @@
       </div>
     </div>
 
-    <!-- Bottom Bar -->
     <div class="footer-bottom">
-      <p>© 2025 Your Website. All Rights Reserved.</p>
+      <p>© 2025 Foodings. All Rights Reserved.</p>
     </div>
   </footer>
-
-  <script>
-    // Fake credentials for validation
-    const validUser = "Diya";
-    const validPass = "12345";
-
-    document.getElementById("signinForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // stop form submission
-
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-
-      if (username === validUser && password === validPass) {
-        // Save username to localStorage so it's accessible on other pages
-        localStorage.setItem("loggedInUser", username);
-
-        // Redirect to home page
-        window.location.href = "home.html";
-      } else {
-        alert("Invalid Username or Password!");
-      }
-    });
-
-    // Show user in navbar if logged in
-    const loggedInUser = localStorage.getItem("loggedInUser");
-    if (loggedInUser) {
-      const loginLink = document.getElementById("login-link");
-      loginLink.innerHTML = `<img src="login image.png" height="20" style="vertical-align:middle;"> ${loggedInUser}`;
-      loginLink.href = "#";
-    }
-  </script>
 </body>
 </html>
