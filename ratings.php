@@ -1,8 +1,10 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Payment Page</title>
+  <title>Ratings Form</title>
   <style>
     /* General Page Styling */
     body 
@@ -10,7 +12,6 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background-color: white;
-      color: rgb(48,47,81);
     }
 
     /* Navigation Bar */
@@ -38,67 +39,75 @@
       color: white;
     }
 
-    /* Centered Payment Form */
+    /* Feedback Form Container */
     .form-container 
     {
-      width: 400px;
-      margin: 40px auto;
+      width: 450px;
+      margin: 50px auto;
       padding: 30px;
       border: 2px solid rgb(48,47,81);
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: #f9f9f9;
-      text-align: left;
     }
 
     .form-container h1 
     {
       text-align: center;
-      margin-bottom: 20px;
       color: rgb(48,47,81);
+      margin-bottom: 20px;
     }
 
+    /* Labels */
     .form-container label 
     {
-      display: block;
-      margin: 10px 0 5px;
       font-weight: bold;
+      color: rgb(48,47,81);
+      display: block;
+      margin-top: 10px;
+      text-align: left;
     }
 
-    .form-container input 
+    /* Input Fields */
+    .form-container input, 
+    .form-container textarea, 
+    .form-container select 
     {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
+      margin-top: 5px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    /* Buttons */
-    .form-buttons 
-    {
-      text-align: center;
-    }
-
-    .form-buttons button 
-    {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      border: 2px solid rgb(48,47,81);
       border-radius: 5px;
-      background-color: white;
-      color: rgb(48,47,81);
-      cursor: pointer;
+      font-size: 15px;
     }
 
-    .form-buttons button:hover 
+    textarea 
+    {
+      resize: none;
+      height: 100px;
+    }
+
+    /* Submit Button */
+    .form-container input[type="submit"] 
     {
       background-color: rgb(48,47,81);
       color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 25px;
+      font-size: 16px;
+      transition: 0.3s ease;
     }
-  
+
+    .form-container input[type="submit"]:hover 
+    {
+      background-color: rgb(48,47,81);
+      color: white;
+      transform: scale(1.05);
+    }
+
     /* ----------- Footer ----------- */
     .footer {
       background: rgb(48,47,81);
@@ -173,8 +182,8 @@
     }
   </style>
 </head>
-<body>
 
+<body>
   <!-- Logo Section -->
   <div style="text-align:center;">
     <img src="logo.jpg" height="130" width="500">
@@ -185,42 +194,53 @@
 
   <!-- Navigation Bar -->
   <div class="topnav">
-    <a href="home.html">           Home</a>
-    <a href="Menu.html">           Menu</a>
-    <a href="Order.html">          Order</a>
-    <a href="login.html">          Log in</a>
-    <a href="contact.html">        Contact Us</a>
-  </div>
+    <a href="home.php">          Home</a>
+    <a href="Menu.php">          Menu</a>
+    <a href="Order.php">         Order</a>
+    <a href="contact.php">       Contact Us</a>
 
+    <?php
+      if (isset($_SESSION["username"])) {
+          echo '
+          <div style="position:absolute; right:20px; top:20px; display:flex; align-items:center; gap:8px;">
+              <img src="login image.png" alt="User" style="height:35px;width:35px;border-radius:50%;">
+              <span style="font-weight:bold; color:rgb(48,47,81);">' . htmlspecialchars($_SESSION["username"]) . '</span>
+              <a href="logout.php" class="nav-btn">Logout</a>
+          </div>';
+      } else {
+          echo '
+          <a href="login.php" class="nav-btn" style="position:absolute; right:20px; top:20px;">Login</a>';
+      }
+    ?>
+  </div>
   <!-- Bottom Border Line -->
   <hr style="border:2px solid rgb(48,47,81);">
 
-  <!-- Payment Form -->
+  <!-- Feedback Form -->
   <div class="form-container">
-    <h1>Payment</h1>
-    <form>
-      <label>Payment Type</label>
-      <input type="text" placeholder="Select Type" required>
+    <h1>Reviews</h1>
+    <form action="feedback.php" method="post">
+      
+      <label>Name:</label>
+      <input type="text" name="name" placeholder="Enter your name" required>
+      
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Enter your email" required>
+      
+      <label>Rate Our Service:</label>
+      <select name="rating" required>
+        <option value="">-- Select Rating --</option>
+        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+        <option value="4">⭐⭐⭐⭐ Good</option>
+        <option value="3">⭐⭐⭐ Average</option>
+        <option value="2">⭐⭐ Poor</option>
+        <option value="1">⭐ Very Poor</option>
+      </select>
 
-      <label>Card Number</label>
-      <input type="text" placeholder="Card Number" required>
+      <label>Your Feedback:</label>
+      <textarea name="message" placeholder="Write your feedback here..." required></textarea>
 
-      <label>CVV</label>
-      <input type="text" placeholder="****" required>
-
-      <label>Order Date</label>
-      <input type="date" required>
-
-      <label>OTP</label>
-      <input type="text" placeholder="******" required>
-
-      <label>Total Amount</label>
-      <input type="text" required>
-
-      <div class="form-buttons">
-        <button type="submit" formaction="successfully.html">Submit</button>
-        <button type="reset">Reset</button>
-      </div>
+      <input type="submit" value="Submit Feedback">
     </form>
   </div>
 <!--Footer -->
@@ -237,10 +257,10 @@
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="payment.html">Payment</a></li>
-          <li><a href="ratings.html">Ratings</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+          <li><a href="payment.php">Payment</a></li>
+          <li><a href="ratings.php">Ratings</a></li>
+          <li><a href="about.php">About Us</a></li>
         </ul>
       </div>
 

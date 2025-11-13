@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,39 +7,34 @@ $dbname = "foodings_db";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) 
 {
-    die("Error! Connection Failure: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $sql = "SELECT * FROM signup_tb WHERE username='$username'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row["password"])) 
+    $user = $_POST["username"];
+    $pass = $_POST["password"];
+    $sql = "SELECT * FROM signup_tb WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) 
+    {
+        if (password_verify($pass, $row["password"])) 
         {
             $_SESSION["username"] = $row["username"];
             $_SESSION["fullname"] = $row["fullname"];
-            $_SESSION["userphoto"] = $row["photo"] ?? "default_user.png";
             header("Location: home.php");
             exit();
         } 
         else 
         {
-            echo "<script>
-                    alert('Incorrect password. Please try again.');
-                    window.history.back();
-                  </script>";
+            echo "<script>alert('Incorrect password'); window.location.href='login.html';</script>";
         }
     } 
     else 
     {
-        echo "<script>
-                alert('No user found with this username.');
-                window.history.back();
-              </script>";
+        echo "<script>alert('User not found'); window.location.href='login.html';</script>";
     }
 }
-$conn->close();
 ?>

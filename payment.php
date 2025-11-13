@@ -1,19 +1,22 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact Us</title>
+  <meta charset="UTF-8">
+  <title>Payment Page</title>
   <style>
     /* General Page Styling */
     body 
     {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+      background-color: white;
       color: rgb(48,47,81);
     }
 
-    /* Top Navigation Bar */
+    /* Navigation Bar */
     .topnav 
     {
       overflow: hidden;
@@ -37,109 +40,68 @@
       background-color: rgb(48,47,81);
       color: white;
     }
-    
-    /* Form Container */
-    .container 
+
+    /* Centered Payment Form */
+    .form-container 
     {
-      width: 100%;
-      max-width: 1140px;
-      margin: 30px auto;
-      background: white;
+      width: 400px;
+      margin: 40px auto;
+      padding: 30px;
       border: 2px solid rgb(48,47,81);
       border-radius: 8px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      background-color: #f9f9f9;
+      text-align: left;
     }
 
-    /* Title Section */
-    .title
+    .form-container h1 
     {
-      background: linear-gradient(to bottom right, rgb(48, 47, 81), rgb(68, 66, 130));
-      border-radius: 5px 5px 0 0;
-      padding: 20px;
-      color: #f6f6f6;
-    }
-    h2 
-    {
-      margin: 0;
-      padding-left: 15px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: rgb(48,47,81);
     }
 
-    /* Flex Layout */
-    .d-flex 
-    {
-      display: flex;
-      flex-direction: row;
-      background: #f6f6f6;
-      border-radius: 0 0 5px 5px;
-      padding: 25px;
-      justify-content: center;
-    }
-
-    form 
-    {
-      flex: 1;
-      max-width: 700px;
-    }
-
-    /* Form Inputs */
-    label 
+    .form-container label 
     {
       display: block;
-      margin: 15px;
-    }
-
-    label > span 
-    {
-      float: left;
-      width: 25%;
-      margin-top: 12px;
-      padding-right: 10px;
+      margin: 10px 0 5px;
       font-weight: bold;
     }
 
-    input[type="text"],
-    input[type="email"],
-    textarea 
+    .form-container input 
     {
-      width: 70%;
-      height: 30px;
-      padding: 5px 10px;
-      margin-bottom: 10px;
-      border: 1px solid #dadada;
-      border-radius: 5px;
-      resize: vertical;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
 
-    textarea 
+    /* Buttons */
+    .form-buttons 
     {
-      height: 100px;
+      text-align: center;
     }
 
-    /* Submit Button */
-    .submit-btn 
+    .form-buttons button 
     {
       display: inline-block;
-      width: 90%;
-      text-align: center;
-      padding: 12px;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      font-weight: bold;
       border: 2px solid rgb(48,47,81);
       border-radius: 5px;
       background-color: white;
       color: rgb(48,47,81);
-      font-size: 17px;
-      font-weight: bold;
-      text-decoration: none;
       cursor: pointer;
-      transition: 0.3s;
-      margin: 20px 15%;
     }
 
-    .submit-btn:hover 
+    .form-buttons button:hover 
     {
       background-color: rgb(48,47,81);
       color: white;
     }
-
+  
     /* ----------- Footer ----------- */
     .footer {
       background: rgb(48,47,81);
@@ -215,55 +177,67 @@
   </style>
 </head>
 <body>
+
   <!-- Logo Section -->
   <div style="text-align:center;">
-    <img src="logo.jpg" height="130" width="500" alt="Logo" />
+    <img src="logo.jpg" height="130" width="500">
   </div>
 
   <!-- Top Border Line -->
-  <hr style="border:2px solid rgb(48,47,81);" />
+  <hr style="border:2px solid rgb(48,47,81);">
 
   <!-- Navigation Bar -->
   <div class="topnav">
-    <a href="home.php">                    Home</a>
-    <a href="Menu.html">                    Menu</a>
-    <a href="Order.html">                   Order</a>
-    <a href="login.html">                   Log in</a>
-    <a href="contact.html" class="active">  Contact Us</a>
+    <a href="home.php">           Home</a>
+    <a href="Menu.php">           Menu</a>
+    <a href="Order.php">          Order</a>
+    <a href="contact.php">        Contact Us</a>
+
+    <?php
+      if (isset($_SESSION["username"])) {
+          echo '
+          <div style="position:absolute; right:20px; top:20px; display:flex; align-items:center; gap:8px;">
+              <img src="login image.png" alt="User" style="height:35px;width:35px;border-radius:50%;">
+              <span style="font-weight:bold; color:rgb(48,47,81);">' . htmlspecialchars($_SESSION["username"]) . '</span>
+              <a href="logout.php" class="nav-btn">Logout</a>
+          </div>';
+      } else {
+          echo '
+          <a href="login.php" class="nav-btn" style="position:absolute; right:20px; top:20px;">Login</a>';
+      }
+    ?>
   </div>
 
   <!-- Bottom Border Line -->
-  <hr style="border:2px solid rgb(48,47,81);" />
+  <hr style="border:2px solid rgb(48,47,81);">
 
-  <!-- Contact Form Container -->
-  <div class="container">
-    <!-- Title -->
-    <div class="title">
-      <h2>Contact Us</h2>
-    </div>
+  <!-- Payment Form -->
+  <div class="form-container">
+    <h1>Payment</h1>
+    <form>
+      <label>Payment Type</label>
+      <input type="text" placeholder="Select Type" required>
 
-    <div class="d-flex">
-      <!-- Contact Form -->
-      <form action="#" method="post">
-        <label>
-          <span>Name *</span>
-          <input type="text" name="name" required />
-        </label>
-        <label>
-          <span>Email *</span>
-          <input type="email" name="email" required />
-        </label>
-        <label>
-          <span>Subject *</span>
-          <input type="text" name="subject" required />
-        </label>
-        <label>
-          <span>Message *</span>
-          <textarea name="message" required></textarea>
-        </label>
-        <button type="submit" class="submit-btn">Send Message</button>
-      </form>
-    </div>
+      <label>Card Number</label>
+      <input type="text" placeholder="Card Number" required>
+
+      <label>CVV</label>
+      <input type="text" placeholder="****" required>
+
+      <label>Order Date</label>
+      <input type="date" required>
+
+      <label>OTP</label>
+      <input type="text" placeholder="******" required>
+
+      <label>Total Amount</label>
+      <input type="text" required>
+
+      <div class="form-buttons">
+        <button type="submit" formaction="successfully.html">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
   </div>
 <!--Footer -->
   <footer class="footer">
@@ -279,10 +253,10 @@
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="payment.html">Payment</a></li>
-          <li><a href="ratings.html">Ratings</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+          <li><a href="payment.php">Payment</a></li>
+          <li><a href="ratings.php">Ratings</a></li>
+          <li><a href="about.php">About Us</a></li>
         </ul>
       </div>
 

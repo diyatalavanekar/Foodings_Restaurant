@@ -1,13 +1,24 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Ratings Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodings Restaurant - About Us</title>
   <style>
-    /* General Page Styling */
     body 
     {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Logo Section */
+    .logo 
+    {
+    
+      text-align: center;
       background-color: white;
     }
 
@@ -19,7 +30,7 @@
       text-align: center;
     }
 
-    .topnav a 
+    .topnav a
     {
       display: inline-block;
       color: rgb(48,47,81);
@@ -36,73 +47,38 @@
       color: white;
     }
 
-    /* Feedback Form Container */
-    .form-container 
+    /* About Us Content */
+    .about-container 
     {
-      width: 450px;
+      max-width: 900px;
       margin: 50px auto;
       padding: 30px;
+      background-color: white;
       border: 2px solid rgb(48,47,81);
       border-radius: 10px;
-      background-color: #f9f9f9;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .form-container h1 
+    .about-container h1 
     {
       text-align: center;
       color: rgb(48,47,81);
       margin-bottom: 20px;
     }
 
-    /* Labels */
-    .form-container label 
+    .about-container p 
     {
-      font-weight: bold;
-      color: rgb(48,47,81);
-      display: block;
-      margin-top: 10px;
-      text-align: left;
-    }
-
-    /* Input Fields */
-    .form-container input, 
-    .form-container textarea, 
-    .form-container select 
-    {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 15px;
-    }
-
-    textarea 
-    {
-      resize: none;
-      height: 100px;
-    }
-
-    /* Submit Button */
-    .form-container input[type="submit"] 
-    {
-      background-color: rgb(48,47,81);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      border-radius: 5px;
-      padding: 12px 25px;
+      text-align: justify;
       font-size: 16px;
-      transition: 0.3s ease;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 15px;
     }
 
-    .form-container input[type="submit"]:hover 
+    .about-container h2 
     {
-      background-color: rgb(48,47,81);
-      color: white;
-      transform: scale(1.05);
+      color: rgb(48,47,81);
+      margin-top: 30px;
     }
 
     /* ----------- Footer ----------- */
@@ -179,11 +155,10 @@
     }
   </style>
 </head>
-
 <body>
-  <!-- Logo Section -->
-  <div style="text-align:center;">
-    <img src="logo.jpg" height="130" width="500">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="logo.jpg" height="130" width="500" alt="Foodings Logo">
   </div>
 
   <!-- Top Border Line -->
@@ -191,42 +166,52 @@
 
   <!-- Navigation Bar -->
   <div class="topnav">
-    <a href="home.html">          Home</a>
-    <a href="Menu.html">          Menu</a>
-    <a href="Order.html">         Order</a>
-    <a href="login.html">         Log in</a>
-    <a href="contact.html">       Contact Us</a>
+    <a href="home.php">Home</a>
+    <a href="Menu.php">Menu</a>
+    <a href="Order.php">Order</a>
+    <a href="contact.php">Contact Us</a>
+
+    <?php
+      if (isset($_SESSION["username"])) {
+          echo '
+          <div style="position:absolute; right:20px; top:20px; display:flex; align-items:center; gap:8px;">
+              <img src="login image.png" alt="User" style="height:35px;width:35px;border-radius:50%;">
+              <span style="font-weight:bold; color:rgb(48,47,81);">' . htmlspecialchars($_SESSION["username"]) . '</span>
+              <a href="logout.php" class="nav-btn">Logout</a>
+          </div>';
+      } else {
+          echo '
+          <a href="login.php" class="nav-btn" style="position:absolute; right:20px; top:20px;">Login</a>';
+      }
+    ?>
   </div>
 
   <!-- Bottom Border Line -->
   <hr style="border:2px solid rgb(48,47,81);">
 
-  <!-- Feedback Form -->
-  <div class="form-container">
-    <h1>Reviews</h1>
-    <form action="feedback.php" method="post">
-      
-      <label>Name:</label>
-      <input type="text" name="name" placeholder="Enter your name" required>
-      
-      <label>Email:</label>
-      <input type="email" name="email" placeholder="Enter your email" required>
-      
-      <label>Rate Our Service:</label>
-      <select name="rating" required>
-        <option value="">-- Select Rating --</option>
-        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
-        <option value="4">⭐⭐⭐⭐ Good</option>
-        <option value="3">⭐⭐⭐ Average</option>
-        <option value="2">⭐⭐ Poor</option>
-        <option value="1">⭐ Very Poor</option>
-      </select>
+  <!-- About Us Section -->
+  <div class="about-container">
+    <h1>About Foodings Restaurant</h1>
+    <p>
+      Welcome to <b>Foodings Restaurant</b>, where taste meets tradition!  
+      Since our establishment, we have been serving delicious, freshly prepared meals made from the finest ingredients.  
+      Our chefs are passionate about creating flavors that not only satisfy your hunger but also bring comfort and joy.
+    </p>
 
-      <label>Your Feedback:</label>
-      <textarea name="message" placeholder="Write your feedback here..." required></textarea>
+    <h2>Our Mission</h2>
+    <p>
+      Our mission is simple — to provide our customers with high-quality, affordable, and mouth-watering food in a cozy and friendly atmosphere.  
+      Whether it’s a family dinner, a quick lunch, or a celebration, Foodings is your go-to destination.
+    </p>
 
-      <input type="submit" value="Submit Feedback">
-    </form>
+    <h2>Why Choose Us?</h2>
+    <p>
+      ✅ Fresh and high-quality ingredients <br>
+      ✅ Wide variety of cuisines <br>
+      ✅ Hygienic and safe food practices <br>
+      ✅ Excellent customer service <br>
+      ✅ Cozy ambiance and family-friendly environment
+    </p>
   </div>
 <!--Footer -->
   <footer class="footer">
@@ -242,10 +227,10 @@
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="payment.html">Payment</a></li>
-          <li><a href="ratings.html">Ratings</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+          <li><a href="payment.php">Payment</a></li>
+          <li><a href="ratings.php">Ratings</a></li>
+          <li><a href="about.php">About Us</a></li>
         </ul>
       </div>
 
