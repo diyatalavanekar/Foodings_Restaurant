@@ -118,12 +118,12 @@
 
   <!-- Navigation Bar -->
   <div class="topnav">
-    <a href="home.html">Home</a>
+    <a href="home.php">Home</a>
     <a href="Menu.html">Menu</a>
     <a href="Order.html">Order</a>
     <a href="login.html">Log in</a>
     <a href="contact.html">Contact Us</a>
-  </div> nb
+  </div>
 
   <!-- Bottom Border Line -->
   <hr style="border:2px solid rgb(48,47,81);">

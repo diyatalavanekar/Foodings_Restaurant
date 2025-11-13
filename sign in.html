@@ -188,7 +188,7 @@
 
   <!-- Navigation -->
   <div class="topnav">
-    <a href="home.html">Home</a>
+    <a href="home.php">Home</a>
     <a href="Menu.html">Menu</a>
     <a href="Order.html">Order</a>
     <a href="login.html">Log in</a>
@@ -200,17 +200,17 @@
   <!-- Sign Up Form -->
   <div class="form-container">
     <h1>Sign Up</h1>
-    <form name="signupForm" method="post" action="signuptable.php" onsubmit="return validateForm()">
-      <label>Full Name:</label>
+    <form name="signupForm" method="post" action="signup_input.php" onsubmit="return validateForm()">
+      <label for="u_name">Full Name:</label>
       <input type="text" name="fullname" id="fullname" required>
 
-      <label>Email:</label>
+      <label for="u_email">Email:</label>
       <input type="email" name="email" id="email" required>
 
-      <label>Username:</label>
+      <label for="u_username">Username:</label>
       <input type="text" name="username" id="username" required minlength="3">
 
-      <label>Password:</label>
+      <label for="u_password">Password:</label>
       <input type="password" name="password" id="password" required minlength="6">
 
       <input type="submit" value="Sign Up">
