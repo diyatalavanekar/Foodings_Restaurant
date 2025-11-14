@@ -18,7 +18,7 @@ $sql = "INSERT INTO signup_tb (fullname, email, username, password)
 if ($conn->query($sql) === TRUE) 
 {
     echo "<font color='green'>Account created successfully!</font>";
-    echo "<br><a href='login.html'>Click here to log in</a>";
+    echo "<br><a href='login.php'>Click here to log in</a>";
 } 
 else 
 {
