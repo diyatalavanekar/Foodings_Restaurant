@@ -1,63 +1,38 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Desserts Page</title>
+  <title>Beverages Page</title>
   <style>
     /* General Page Styling */
-    body 
-    {
+    body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background-color: white;
     }
 
     /* Navigation Bar */
-    .topnav 
-    {
+    .topnav {
       overflow: hidden;
       background-color: white;
-      text-align: center; 
+      text-align: center;
     }
 
-    .topnav a 
-    {
+    .topnav a {
       display: inline-block;
       color: rgb(48,47,81);
       text-align: center;
       padding: 20px 20px;
       text-decoration: none;
       font-size: 17px;
-      font-weight: bold; 
-    }
-
-    .topnav a:hover 
-    {
-      background-color: rgb(48,47,81);
-      color: white; 
-    }
-
-    /* Order Now Button Styling */
-    .order-btn 
-    {
-      display: inline-block;
-      color: rgb(48,47,81);
       font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif;
-      text-decoration: none;
-      font-size: 17px;
-      padding: 15px 30px;
-      text-align: center;
-      border: 2px solid rgb(48,47,81);
-      border-radius: 5px;
-      margin: 20px 0;
-      background-color: white;
-      transition: 0.3s ease;
     }
 
-    .order-btn:hover 
-    {
-      background-color: rgb(48,47,81); 
-      color: white; 
+    .topnav a:hover {
+      background-color: rgb(48,47,81);
+      color: white;
     }
 
     /* ----------- Footer ----------- */
@@ -134,7 +109,6 @@
     }
   </style>
 </head>
-
 <body>
   <!-- Logo Section -->
   <div style="text-align:center;">
@@ -146,73 +120,82 @@
 
   <!-- Navigation Bar -->
   <div class="topnav">
-    <a href="home.html">           Home</a>
-    <a href="Menu.html">           Menu</a>
-    <a href="Order.html">          Order</a>
-    <a href="login.html">          Log in</a>
-    <a href="contact.html">        Contact Us</a>
+    <a href="home.php">Home</a>
+    <a href="Menu.php">Menu</a>
+    <a href="Order.php">Order</a>
+    <a href="contact.php">Contact Us</a>
+
+    <?php
+      if (isset($_SESSION["username"])) {
+          echo '
+          <div style="position:absolute; right:20px; top:20px; display:flex; align-items:center; gap:8px;">
+              <img src="login image.png" alt="User" style="height:35px;width:35px;border-radius:50%;">
+              <span style="font-weight:bold; color:rgb(48,47,81);">' . htmlspecialchars($_SESSION["username"]) . '</span>
+              <a href="logout.php" class="nav-btn">Logout</a>
+          </div>';
+      } else {
+          echo '
+          <a href="login.php" class="nav-btn" style="position:absolute; right:20px; top:20px;">Login</a>';
+      }
+    ?>
   </div>
 
   <!-- Bottom Border Line -->
   <hr style="border:2px solid rgb(48,47,81);">
 
   <!-- Page Title -->
-  <h1 align="center" style="color:rgb(48,47,81);">Desserts</h1>
+  <h1 align="center" style="color:rgb(48,47,81);">Beverages</h1>
 
-  <!-- Dessert Table -->
+  <!-- Beverages Table -->
   <center>
     <table>
       <!-- First Row of Images -->
       <tr>
-        <td><center><img src="dessert gulab jamun.jpg" height="300" width="300"></center></td>
-        <td><center><img src="dessert rasgulla.jpg"    height="300" width="300"></center></td>
-        <td><center><img src="dessert kheer.jpg"       height="300" width="300"></center></td>
-        <td><center><img src="dessert brownies.jpg"    height="300" width="300"></center></td>
+        <td><center><a href="coffee info.php"><img src="beverages coffee.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="tea info.php"><img src="beverages tea.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="milkshake info.php"><img src="beverages milkshake.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="lemonde.php"><img src="beverages lemonade.jpg" height="300" width="300"></a></center></td>
       </tr>
       <!-- First Row of Names -->
       <tr>
-        <td><center><b>Gulab Jamun  </b></center></td>
-        <td><center><b>Rasgulla     </b></center></td>
-        <td><center><b>Kheer        </b></center></td>
-        <td><center><b>Brownie      </b></center></td>
+        <td><center><b>Coffee</b></center></td>
+        <td><center><b>Tea</b></center></td>
+        <td><center><b>Milkshake</b></center></td>
+        <td><center><b>Lemonade</b></center></td>
       </tr>
       <!-- First Row of Prices -->
       <tr>
-        <td><center><b>Price - 100 Rs/4pcs  </b></center></td>
-        <td><center><b>Price - 140/kg       </b></center></td>
-        <td><center><b>Price - 100/kg       </b></center></td>
-        <td><center><b>Price - 90/kg        </b></center></td>
+        <td><center><b>Price - 80 Rs/cup</b></center></td>
+        <td><center><b>Price - 50 Rs/cup</b></center></td>
+        <td><center><b>Price - 120 Rs/glass</b></center></td>
+        <td><center><b>Price - 60 Rs/glass</b></center></td>
       </tr>
 
       <!-- Second Row of Images -->
       <tr>
-        <td><center><img src="dessert ice cream sundae.jpg"     height="300" width="300"></center></td>
-        <td><center><img src="dessert custurd with fruits.jpg"  height="300" width="300"></center></td>
-        <td><center><img src="dessert tiramisu.jpg"             height="300" width="300"></center></td>
-        <td><center><img src="dessert donuts.jpg"               height="300" width="300"></center></td>
+        <td><center><a href="Order.php"><img src="beverages cold drink.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="Order.php"><img src="beverages smoothie.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="Order.php"><img src="beverages lassi.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="Order.php"><img src="beverages hot chocolate.jpg" height="300" width="300"></a></center></td>
       </tr>
       <!-- Second Row of Names -->
       <tr>
-        <td><center><b>Ice Cream Sundae     </b></center></td>
-        <td><center><b>Custard with Fruits  </b></center></td>
-        <td><center><b>Tiramisu             </b></center></td>
-        <td><center><b>Donuts               </b></center></td>
+        <td><center><b>Cold Drink</b></center></td>
+        <td><center><b>Smoothie</b></center></td>
+        <td><center><b>Lassi</b></center></td>
+        <td><center><b>Hot Chocolate</b></center></td>
       </tr>
       <!-- Second Row of Prices -->
       <tr>
-        <td><center><b>Price - 150 Rs/200g  </b></center></td>
-        <td><center><b>Price - 120 Rs/150g  </b></center></td>
-        <td><center><b>Price - 250 Rs/120g  </b></center></td>
-        <td><center><b>Price - 70 Rs/80g    </b></center></td>
+        <td><center><b>Price - 40 Rs/bottle</b></center></td>
+        <td><center><b>Price - 150 Rs/glass</b></center></td>
+        <td><center><b>Price - 70 Rs/glass</b></center></td>
+        <td><center><b>Price - 100 Rs/cup</b></center></td>
       </tr>
     </table>
   </center>
 
-  <!-- Order Now Button -->
-  <center>
-    <a href="Order.html" class="order-btn">Order Now</a>
-  </center>
-<!--Footer -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
       
@@ -226,10 +209,10 @@
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="payment.html">Payment</a></li>
-          <li><a href="ratings.html">Ratings</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+          <li><a href="payment.php">Payment</a></li>
+          <li><a href="ratings.php">Ratings</a></li>
+          <li><a href="about.php">About Us</a></li>
         </ul>
       </div>
 

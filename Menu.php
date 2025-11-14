@@ -156,22 +156,22 @@
     <table>
       <tr>
         <td>
-          <a href="Starters.html">
+          <a href="Starters.php">
             <img src="menu image of starter.jpg"          height="300" width="300">
           </a>
         </td>
         <td>
-          <a href="Main courses.html">
+          <a href="Main courses.php">
             <img src="menu main courses.jpg"              height="300" width="300">
           </a>
         </td>
         <td>
-          <a href="Beverages.html">
+          <a href="Beverages.php">
             <img src="menu image of beverages.jpg"        height="300" width="300">
           </a>
         </td>
         <td>
-          <a href="Soups and salads.html">
+          <a href="Soups and salads.php">
             <img src="menu image of soups and salads.jpg" height="300" width="300">
           </a>
         </td>
@@ -185,12 +185,12 @@
 
       <tr>
         <td>
-          <a href="Cake.html">
+          <a href="Cake.php">
             <img src="cakes.jpeg"                 height="300" width="300">
           </a>
         </td>
         <td>
-          <a href="Desserts.html">
+          <a href="Desserts.php">
             <img src="menu image of dessert.jpg"  height="300" width="300">
           </a>
         </td>
