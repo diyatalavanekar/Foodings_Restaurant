@@ -69,6 +69,7 @@
       font-size: 18px;
       color: rgb(48,47,81);
     }
+
     .footer {
       background: rgb(48,47,81);
       color: white;
@@ -133,7 +134,6 @@
       padding-top: 10px;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .footer-container {
         flex-direction: column;
@@ -159,7 +159,7 @@
     <a href="Order.php"> Order</a>
     <a href="contact.php"> Contact Us</a>
 
-    ?php
+    <?php
       if (isset($_SESSION["username"])) {
           echo '
           <div style="position:absolute; right:20px; top:20px; display:flex; align-items:center; gap:8px;">
@@ -189,10 +189,18 @@
       <p><b>Category:</b> Vegetarian Starter</p>
     </div>
 
-    <a href="Order.html" class="order-btn">Order Now</a>
+    <!-- Button Here -->
+    <form action="addtoplate.php" method="POST">
+    <input type="hidden" name="product_name" value="Crispy Samosa">
+    <input type="hidden" name="product_price" value="25">
+    <button type="submit" class="order-btn">Add to Plate</button>
+</form>
+   <!-- sends the product name & price to the Order page-->
+
+    <a href="Order.php" class="order-btn">Order Now</a>
   </div>
 
-  <!-- Footer Line -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
       
@@ -222,7 +230,6 @@
 
     </div>
 
-    <!-- Bottom Bar -->
     <div class="footer-bottom">
       <p>© 2025 Your Website. All Rights Reserved.</p>
     </div>

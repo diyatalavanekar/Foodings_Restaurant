@@ -1,28 +1,33 @@
 <?php
-  session_start();
+session_start();
+
+// If cart is empty, show message and stop
+$cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+
+if (empty($cart)) {
+    echo "<h2>Your plate is empty! Please add items first.</h2>";
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Order Now Page</title>
+  <title>Order Now</title>
 
   <style>
-    /* ===== General Page Styling ===== */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      
-      color: rgb(48,47,81);
+      background-color: white;
     }
 
-    /* ===== Top Navigation Bar ===== */
     .topnav {
       overflow: hidden;
       background-color: white;
       text-align: center;
     }
+
     .topnav a {
       display: inline-block;
       color: rgb(48,47,81);
@@ -32,125 +37,62 @@
       font-size: 17px;
       font-weight: bold;
     }
+
     .topnav a:hover {
       background-color: rgb(48,47,81);
       color: white;
     }
-    
-    /* ===== Order Form Container ===== */
-    .container {
-      width: 100%;
-      max-width: 1140px;
-      margin: 30px auto;
-      background: white;
+
+    .order-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
       border: 2px solid rgb(48,47,81);
-      border-radius: 8px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    }
-
-    /* ===== Title Section ===== */
-    .title {
-      background: linear-gradient(to bottom right, rgb(48, 47, 81), rgb(68, 66, 130));
-      border-radius: 5px 5px 0 0;
-      padding: 20px;
-      color: #f6f6f6;
-    }
-    h2 { margin: 0; padding-left: 15px; }
-
-    /* ===== Flex Layout ===== */
-    .d-flex {
-      display: flex;
-      flex-direction: row;
-      background: #f6f6f6;
-      border-radius: 0 0 5px 5px;
-      padding: 25px;
-    }
-    form { flex: 4; }
-    .Yorder { flex: 2; padding-left: 20px; }
-
-    /* ===== Form Inputs ===== */
-    label {
-      display: block;
-      margin: 15px;
-    }
-    label > span {
-      float: left;
-      width: 25%;
-      margin-top: 12px;
-      padding-right: 10px;
-    }
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
-    select {
-      width: 70%;
-      height: 30px;
-      padding: 5px 10px;
-      margin-bottom: 10px;
-      border: 1px solid #dadada;
-      border-radius: 5px;
-    }
-    select { height: 40px; }
-
-    /* ===== Order Summary Table ===== */
-    .Yorder table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    th {
-      border-bottom: 1px solid #dadada;
-      padding: 10px 0;
-      text-align: left;
-    }
-    td {
-      border-bottom: 1px solid #dadada;
-      padding: 15px 0;
-    }
-
-    /* ===== Payment Section ===== */
-    .payment-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px; /* spacing between options */
-    }
-    .payment-option input[type="radio"] {
-      transform: scale(1.2);
-      accent-color: rgb(48,47,81);
-    }
-    p.payment-info {
-      margin-left: 25px;
-      margin-bottom: 15px;
-      color: #555;
-    }
-
-    /* ===== Place Order Button ===== */
-    .order-btn {
-      display: inline-block;
-      width: 90%;
-      text-align: center;
-      padding: 12px;
-      border: 2px solid rgb(48,47,81);
-      border-radius: 5px;
-      background-color: white;
+      border-radius: 10px;
       color: rgb(48,47,81);
-      font-size: 17px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
     }
-    .order-btn:hover {
-      background-color: rgb(48,47,81);
+
+    .order-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: rgb(48,47,81);
+    }
+
+    .order-container label {
+      font-weight: bold;
+    }
+
+    .order-container input,
+    .order-container select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 18px;
+      border: 1px solid rgb(48,47,81);
+      border-radius: 5px;
+    }
+
+    .order-btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: rgb(48,47,81);
       color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .order-btn-submit:hover {
+      background: black;
       cursor: pointer;
     }
 
-    /* ----------- Footer ----------- */
     .footer {
       background: rgb(48,47,81);
       color: white;
       padding: 40px 80px 20px;
+      margin-top: 50px;
     }
 
     .footer-container {
@@ -210,28 +152,34 @@
       border-top: 1px solid white;
       padding-top: 10px;
     }
+    /* Style for all remove buttons */
+.remove-btn, .remove-all-btn {
+    background-color: #ea0909ff;  /* Dark Red */
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
+.remove-btn:hover, .remove-all-btn:hover {
+    background-color: #6b0404ff;  /* Darker Red on hover */
+}
+
   </style>
 </head>
 
 <body>
-  <!-- ===== Logo Section ===== -->
+
+  <!-- LOGO -->
   <div style="text-align:center;">
     <img src="logo.jpg" height="130" width="500">
-  </div>
+</div>
+<hr style="border:2px solid rgb(48,47,81);">
 
-  <!-- ===== Top Border Line ===== -->
-  <hr style="border:2px solid rgb(48,47,81);">
-
-  <!-- ===== Navigation Bar ===== -->
-  <div class="topnav">
+<div class="topnav">
     <a href="home.php">Home</a>
     <a href="Menu.php">Menu</a>
     <a href="Order.php">Order</a>
@@ -250,84 +198,93 @@
           <a href="login.php" class="nav-btn" style="position:absolute; right:20px; top:20px;">Login</a>';
       }
     ?>
-  </div>
-  <!-- ===== Bottom Border Line ===== -->
-  <hr style="border:2px solid rgb(48,47,81);">
+</div>
+<hr style="border:2px solid rgb(48,47,81);">
 
-  <!-- ===== Order Container ===== -->
-  <div class="container">
-    <!-- Title -->
-    <div class="title"><h2>Place Your Order</h2></div>
+<div class="order-container">
+    <h2>Place Your Order</h2>
 
-    <div class="d-flex">
-      <!-- ===== Order Form ===== -->
-      <form>
-        <label><span>First Name *</span><input type="text" name="fname"></label>
-        <label><span>Last Name *</span><input type="text" name="lname"></label>
-        <label><span>Address *</span><input type="text" name="houseadd" placeholder="House number and street name" required></label>
-        <label><span></span><input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)"></label>
-        <label><span>Town / City *</span><input type="text" name="city"></label>
-        <label><span>State *</span><input type="text" name="state"></label>
-        <label><span>Pincode *</span><input type="text" name="pincode"></label>
-        <label><span>Phone *</span><input type="tel" name="phone"></label>
-        <label><span>Email *</span><input type="email" name="email"></label>
-      </form>
+    <h3>Your Plate</h3>
 
-      <!-- ===== Order Summary ===== -->
-      <div class="Yorder">
-        <table>
-          <tr><th colspan="2">Your Order</th></tr>
-          <tr>
-            <td colspan="2">
-              Product Name *<br>
-              <input type="text" name="pname" style="width: 95%; padding: 5px; margin-top: 5px;">
-            </td>
-          </tr>
-          <tr><td>Total Price</td><td>0.00 Rs</td></tr>
-          <tr><td>Shipping</td><td>Free Shipping</td></tr>
+    <?php if(!empty($cart)) { ?>
+        <table border="1" width="100%" style="border-collapse: collapse; margin-bottom: 20px;">
+            <tr>
+                <th style="padding:10px; background:rgb(48,47,81); color:white;">Product</th>
+                <th style="padding:10px; background:rgb(48,47,81); color:white;">Price (Rs)</th>
+                <th style="padding:10px; background:rgb(48,47,81); color:white;">Action</th>
+            </tr>
+            <?php
+            $total = 0;
+            foreach ($cart as $index => $item) {
+                $total += $item['price'];
+            ?>
+            <tr>
+                <td style="padding:10px; color:rgb(48,47,81);"><?php echo $item['name']; ?></td>
+                <td style="padding:10px; color:rgb(48,47,81);"><?php echo $item['price']; ?></td>
+                <td style="padding:10px;">
+                    <!-- Remove single item -->
+                    <form action="remove_item.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="index" value="<?php echo $index; ?>">
+                        <button type="submit" class="remove-btn">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            <?php } ?>
         </table>
 
-        <!-- ===== Payment Options ===== -->
-        <div class="payment-option">
-          <input type="radio" name="payment" value="bank" checked>
-          <label>Direct Bank Transfer</label>
-        </div>
-        <p class="payment-info">
-          Make your payment directly into our bank account. Please use your Order ID as the payment reference.
-          Your order will not be shipped until the funds have cleared in our account.
-        </p>
+        <h3 style="color:rgb(48,47,81);">Total Amount: Rs <?php echo $total; ?></h3>
 
-        <div class="payment-option">
-          <input type="radio" name="payment" value="cod">
-          <label>Cash on Delivery</label>
-        </div>
-        <div class="payment-option">
-          <input type="radio" name="payment" value="gpay">
-          <img src="Google_Pay_Logo.png" height="30" width="100">
-        </div>
-        <div class="payment-option">
-          <input type="radio" name="payment" value="paytm">
-          <img src="paytm_logo.png" height="30" width="90">
-        </div>
+        <!-- Remove All Button -->
+        <form action="clear_plate.php" method="POST">
+            <button type="submit" class="remove-all-btn">Remove All</button>
+        </form>
 
-        <!-- ===== Place Order Button ===== -->
-        <div>
-          <a href="payment.html" class="order-btn">Place Order</a>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--Footer -->
+    <?php } else { ?>
+        <p style="color:rgb(48,47,81); font-weight:bold;">Your plate is empty.</p>
+    <?php } ?>
+
+    <!-- Order Form -->
+    <form action="order_input.php" method="POST">
+        <?php if(!empty($cart)) {
+            $productNames = implode(", ", array_column($cart, "name"));
+        ?>
+            <input type="hidden" name="product" value="<?php echo $productNames; ?>">
+            <input type="hidden" name="price" value="<?php echo $total; ?>">
+        <?php } ?>
+
+        <label>Name</label>
+        <input type="text" name="name" required pattern="[A-Za-z ]{3,}" title="Enter a valid name">
+
+        <label>Mobile Number</label>
+        <input type="text" name="mobile" required pattern="[0-9]{10}" title="Enter 10 digit mobile number">
+
+        <label>Address</label>
+        <input type="text" name="address" required minlength="5" title="Enter a valid address">
+
+        <label>Product Name(s)</label>
+        <input type="text" value="<?php echo !empty($cart) ? $productNames : ''; ?>" readonly>
+
+        <label>Total Price (Rs)</label>
+        <input type="text" value="<?php echo !empty($cart) ? $total : ''; ?>" readonly>
+
+        <label>Payment Method</label>
+        <select name="payment" required>
+            <option value="">Select</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+            <option value="UPI">UPI</option>
+        </select>
+
+        <button type="submit" class="order-btn-submit">Confirm Order</button>
+    </form>
+</div>
+
   <footer class="footer">
     <div class="footer-container">
-      
-      <!-- Branding -->
       <div class="footer-section">
-        <img src="logo.jpg" alt="Logo" class="footer-logo">
+        <img src="logo.jpg" class="footer-logo">
         <p class="footer-brand">By Diya & Shital</p>
       </div>
 
-      <!-- Quick Links -->
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
@@ -338,19 +295,17 @@
         </ul>
       </div>
 
-      <!-- Contact -->
       <div class="footer-section">
         <h4>Contact</h4>
         <p>Email: diyashital@gmail.com</p>
         <p>Phone: +91 7756053060</p>
       </div>
-
     </div>
 
-    <!-- Bottom Bar -->
     <div class="footer-bottom">
       <p>© 2025 Your Website. All Rights Reserved.</p>
     </div>
   </footer>
+
 </body>
 </html>
