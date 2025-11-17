@@ -188,8 +188,11 @@
       <p><b>Serving Size:</b> 1 plate</p>
       <p><b>Category:</b> Non-Vegetarian </p>
     </div>
-
-    <a href="Order.html" class="order-btn">Order Now</a>
+     <!-- Button Here -->
+    <form action="addtoplate.php" method="POST">
+    <input type="hidden" name="product_name" value="Butter Chicken">
+    <input type="hidden" name="product_price" value="280">
+    <button type="submit" class="order-btn">Add to Plate</button>
   </div>
 
   <!-- Footer Line -->

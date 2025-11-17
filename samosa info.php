@@ -196,8 +196,6 @@
     <button type="submit" class="order-btn">Add to Plate</button>
 </form>
    <!-- sends the product name & price to the Order page-->
-
-    <a href="Order.php" class="order-btn">Order Now</a>
   </div>
 
   <!-- Footer -->

@@ -187,8 +187,11 @@
       <p><b>Serving Size:</b> 4 pieces per plate</p>
       <p><b>Category:</b> Vegetarian Starter</p>
     </div>
-
-    <a href="Order.php" class="order-btn">Order Now</a>
+    <!-- Button Here -->
+    <form action="addtoplate.php" method="POST">
+    <input type="hidden" name="product_name" value="Garlic bread with cheese">
+    <input type="hidden" name="product_price" value="150">
+    <button type="submit" class="order-btn">Add to Plate</button>
   </div>
 
   <!-- Footer Line -->

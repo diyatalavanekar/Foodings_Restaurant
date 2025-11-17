@@ -194,8 +194,6 @@
     <input type="hidden" name="product_price" value="180">
     <button type="submit" class="order-btn">Add to Plate</button>
 </form>
-
-    <a href="Order.php" class="order-btn">Order Now</a>
   </div>
 
   <!-- Footer Line -->
