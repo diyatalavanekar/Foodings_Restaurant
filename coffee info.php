@@ -1,7 +1,10 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Samosa Details</title>
+  <title>Coffee Details</title>
   <style>
     /* Copy your same CSS here for consistency */
     body {
@@ -151,11 +154,24 @@
 
   <!-- Navigation Bar -->
   <div class="topnav">
-    <a href="home.html"> Home</a>
-    <a href="Menu.html"> Menu</a>
-    <a href="Order.html"> Order</a>
-    <a href="login.html"> Log in</a>
-    <a href="contact.html"> Contact Us</a>
+    <a href="home.php"> Home</a>
+    <a href="Menu.php"> Menu</a>
+    <a href="Order.php"> Order</a>
+    <a href="contact.php"> Contact Us</a>
+
+    <?php
+      if (isset($_SESSION["username"])) {
+          echo '
+          <div style="position:absolute; right:20px; top:20px; display:flex; align-items:center; gap:8px;">
+              <img src="login image.png" alt="User" style="height:35px;width:35px;border-radius:50%;">
+              <span style="font-weight:bold; color:rgb(48,47,81);">' . htmlspecialchars($_SESSION["username"]) . '</span>
+              <a href="logout.php" class="nav-btn">Logout</a>
+          </div>';
+      } else {
+          echo '
+          <a href="login.php" class="nav-btn" style="position:absolute; right:20px; top:20px;">Login</a>';
+      }
+    ?>
   </div>
 
   <!-- Bottom Border Line -->
@@ -163,14 +179,14 @@
 
   <!-- Dish Details Section -->
   <div class="dish-container">
-    <h1>Biryani</h1>
-    <img src="main courses biryani.jpg" alt="Chicken Biryani" width="400" height="300">
+    <h1>Hot coffee</h1>
+    <img src="beverages coffee.jpg" alt="Hot coffee" width="400" height="300">
     
     <div class="dish-details">
-      <p><b>Price:</b> 250 Rs per plate</p>
-      <p><b>Description:</b> Famous indian Chicken Biryani</p>
-      <p><b>Serving Size:</b> 1 plate</p>
-      <p><b>Category:</b> Non-Vegetarian </p>
+      <p><b>Price:</b> 80 Rs per cup</p>
+      <p><b>Description:</b>Hot coffee with chocolate flavour.</p>
+      <p><b>Serving Size:</b> 1 cup</p>
+      <p><b>Category:</b> Vegetarian drink</p>
     </div>
 
     <a href="Order.html" class="order-btn">Order Now</a>
@@ -190,10 +206,10 @@
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="payment.html">Payment</a></li>
-          <li><a href="ratings.html">Ratings</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+          <li><a href="payment.php">Payment</a></li>
+          <li><a href="ratings.php">Ratings</a></li>
+          <li><a href="about.php">About Us</a></li>
         </ul>
       </div>
 
