@@ -147,7 +147,7 @@
 
   <!-- Main Image Section -->
   <div style="text-align:center;">
-    <img src="home main image.jpg" height="500" width="1400">
+    <img src="home main image.jpg" height="500" width="1233">
   </div>
 
   <!-- Footer -->
