@@ -1,7 +1,15 @@
 <?php
 session_start();
 
-// If cart is empty, show message and stop
+if (!isset($_SESSION["username"])) {
+    echo "<script>
+            alert('Please login first to place your order!');
+            window.location.href = 'login.php';
+          </script>";
+    exit();
+}
+
+// If cart is empty
 $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 
 if (empty($cart)) {

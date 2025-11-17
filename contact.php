@@ -1,6 +1,16 @@
 <?php
-  session_start();
+session_start();
+
+// If user is NOT logged in → show popup and stop page from loading
+if (!isset($_SESSION["username"])) {
+    echo "<script>
+            alert('Please login first to access the Contact Us page');
+            window.location.href = 'login.php';
+          </script>";
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -260,7 +270,7 @@
 
     <div class="d-flex">
       <!-- Contact Form -->
-      <form action="#" method="post">
+      <form action="contact_input.php" method="post">
         <label>
           <span>Name *</span>
           <input type="text" name="name" required />

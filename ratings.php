@@ -219,7 +219,7 @@
   <!-- Feedback Form -->
   <div class="form-container">
     <h1>Reviews</h1>
-    <form action="feedback.php" method="post">
+    <form action="ratings_input.php" method="post">
       
       <label>Name:</label>
       <input type="text" name="name" placeholder="Enter your name" required>
