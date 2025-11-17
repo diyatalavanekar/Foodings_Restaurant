@@ -149,7 +149,7 @@
 
   <!--  Navigation Bar  -->
   <div class="topnav">
-    <a class="active" href="home.php"> Home</a>
+    <a href="home.php">                Home</a>
     <a href="Menu.php">                Menu</a>
     <a href="Order.php">               Order</a>
     <a href="contact.php">             Contact Us</a>
@@ -181,22 +181,22 @@
       <!-- Row 1: Images -->
       <tr>
         <td>
-          <a href="samosa info.html">
+          <a href="samosa info.php">
             <img src="starter samosa.jpg" height="300" width="300" alt="Starter Samosa">
           </a>
         </td>
         <td>
-          <a href="paneer tikka info.html">
+          <a href="paneer tikka info.php">
             <img src="starter paneer tikka.jpg" height="300" width="300" alt="Starter Samosa">
           </a>
         </td>
         <td>
-          <a href="chicken tandoori info.html">
+          <a href="chicken tandoori info.php">
             <img src="starter chicken tandoori.jpg" height="300" width="300" alt="Starter Samosa">
           </a>
         </td>
         <td>
-          <a href="onion bhaji rings info.html">
+          <a href="onion bhaji rings info.php">
             <img src="starter onion bhaji rings.jpg" height="300" width="300" alt="Starter Samosa">
           </a>
         </td>
@@ -221,22 +221,22 @@
       <!-- Row 4: Images -->
       <tr>
         <td>
-          <a href="veg manchurian info.html">
+          <a href="veg manchurian info.php">
             <img src="starter veg manchurian.jpg" height="300" width="300" alt="Starter Samosa">
           </a>
         </td>
         <td>
-          <a href="garlic bread with cheese info.html">
+          <a href="garlic bread with cheese info.php">
             <img src="starter garlic bread with cheese.jpg" height="300" width="300" alt="Starter Samosa">
           </a>
         </td>
         <td>
-          <a href="arancini info.html">
+          <a href="arancini info.php">
             <img src="starter arancini.jpg" height="300" width="300" alt="Starter Samosa">
           </a>
         </td>
         <td>
-          <a href="chilli paneer info.html">
+          <a href="chilli paneer info.php">
             <img src="starter chilli paneer.jpg" height="300" width="300" alt="Starter Samosa">
           </a>
         </td>
@@ -262,10 +262,6 @@
     </table>
   </center>
 
-  <!--  Order Now Button  -->
-  <center>
-    <a href="Order.html" class="order-btn">Order Now</a>
-  </center>
 <!--Footer -->
   <footer class="footer">
     <div class="footer-container">
