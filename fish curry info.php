@@ -188,7 +188,12 @@
       <p><b>Category:</b> Non-Vegetarian </p>
     </div>
 
-    <a href="Order.php" class="order-btn">Order Now</a>
+    <!-- Button Here -->
+    <form action="addtoplate.php" method="POST">
+    <input type="hidden" name="product_name" value="Fish Curry">
+    <input type="hidden" name="product_price" value="300">
+    <button type="submit" class="order-btn">Add to Plate</button>
+    </form>
   </div>
 
   <!-- Footer Line -->

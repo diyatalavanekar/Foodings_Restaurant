@@ -154,7 +154,7 @@
         <td><center><a href="coffee info.php"><img src="beverages coffee.jpg" height="300" width="300"></a></center></td>
         <td><center><a href="tea info.php"><img src="beverages tea.jpg" height="300" width="300"></a></center></td>
         <td><center><a href="milkshake info.php"><img src="beverages milkshake.jpg" height="300" width="300"></a></center></td>
-        <td><center><a href="lemonde.php"><img src="beverages lemonade.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="lemonade info.php"><img src="beverages lemonade.jpg" height="300" width="300"></a></center></td>
       </tr>
       <!-- First Row of Names -->
       <tr>
@@ -173,10 +173,10 @@
 
       <!-- Second Row of Images -->
       <tr>
-        <td><center><a href="Order.php"><img src="beverages cold drink.jpg" height="300" width="300"></a></center></td>
-        <td><center><a href="Order.php"><img src="beverages smoothie.jpg" height="300" width="300"></a></center></td>
-        <td><center><a href="Order.php"><img src="beverages lassi.jpg" height="300" width="300"></a></center></td>
-        <td><center><a href="Order.php"><img src="beverages hot chocolate.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="cold drink info.php"><img src="beverages cold drink.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="smoothie info.php"><img src="beverages smoothie.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="lassi info.php"><img src="beverages lassi.jpg" height="300" width="300"></a></center></td>
+        <td><center><a href="hot chocolate info.php"><img src="beverages hot chocolate.jpg" height="300" width="300"></a></center></td>
       </tr>
       <!-- Second Row of Names -->
       <tr>
