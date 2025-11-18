@@ -1,5 +1,15 @@
 <?php
   session_start();
+
+  // If user is NOT logged in → show popup and stop page from loading
+if (!isset($_SESSION["username"])) {
+    echo "<script>
+            alert('Please login first to access the Payment page');
+            window.location.href = 'login.php';
+          </script>";
+    exit;
+}
+?>
 ?>
 <!DOCTYPE html>
 <html lang="en">
