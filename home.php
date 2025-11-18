@@ -176,6 +176,9 @@
         <h4>Contact</h4>
         <p>Email: diyashital@gmail.com</p>
         <p>Phone: +91 7756053060</p>
+        <ul>
+          <li><a href="admin/admin_login.php">Admin</a></li>
+      </ul>
       </div>
 
     </div>
